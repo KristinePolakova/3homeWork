@@ -21,8 +21,8 @@ describe('DiscountComponent', () => {
   });
 
   it('should give no discount for price below €15,000', () => {
-    expect(component.calculateDiscount(10000, false)).toBe(0);
-    expect(component.calculateDiscount(10000, true)).toBe(0);
+    expect(component.calculateDiscount(14999, false)).toBe(0);
+    expect(component.calculateDiscount(14999, true)).toBe(0);
   });
 
   it('should give no discount for non-VIPs for price between €15,000 and €20,000', () => {
@@ -33,8 +33,13 @@ describe('DiscountComponent', () => {
     expect(component.calculateDiscount(18000, true)).toBe(0.05);
   });
 
+  it('should give a 7% discount for price at €20,000', () => {
+    expect(component.calculateDiscount(20000, false)).toBe(0.07);
+    expect(component.calculateDiscount(20000, true)).toBe(0.07);
+  });
+
   it('should give a 7% discount for price above €20,000', () => {
-    expect(component.calculateDiscount(25000, false)).toBe(0.07);
-    expect(component.calculateDiscount(25000, true)).toBe(0.07);
+    expect(component.calculateDiscount(20001, false)).toBe(0.07);
+    expect(component.calculateDiscount(20001, true)).toBe(0.07);
   });
 });
