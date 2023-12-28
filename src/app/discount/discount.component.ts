@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './discount.component.html',
   styleUrl: './discount.component.css',
 })
+
 export class DiscountComponent {
   calculateDiscount(price: number, isVip: boolean): number {
     if (price < 15000) {
